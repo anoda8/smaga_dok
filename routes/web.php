@@ -14,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->user()?->hasRole('super')){
+        return redirect('admin/home');
+    }
 });
 
 Auth::routes([
     'register' => false
 ]);
+Route::get('/home', App\Http\Controllers\Pages\Admin\Dashboard::class)->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
+    Route::get('/home', App\Http\Controllers\Pages\Admin\Dashboard::class)->name('admin.home');
+});
