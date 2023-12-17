@@ -114,7 +114,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalLogout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -158,6 +158,40 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Modal Body -->
+  <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalLogout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLogout">Konfirmasi Logout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Tekan tombol logout untuk mengakhiri sesi login.
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary btn-sm" type="button" data-bs-dismiss="modal">Batal</button>
+            <a class="btn btn-danger btn-sm" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Optional: Place to the bottom of scripts -->
+  <script>
+    const myModal = new bootstrap.Modal(document.getElementById('modalLogout'), options)
+
+  </script>
 
   <!-- Vendor JS Files -->
   <script src="/storage/assets/vendor/apexcharts/apexcharts.min.js"></script>

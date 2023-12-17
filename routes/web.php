@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function(){
+    return redirect('/login');
+});
+
+Route::get('/home', function () {
     if(auth()->user()?->hasRole('super')){
         return redirect('admin/home');
     }
@@ -22,8 +26,8 @@ Route::get('/', function () {
 Auth::routes([
     'register' => false
 ]);
-Route::get('/home', App\Http\Controllers\Pages\Admin\Dashboard::class)->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('/home', App\Http\Controllers\Pages\Admin\Dashboard::class)->name('admin.home');
+    Route::get('/agenda-kegiatan', App\Http\Controllers\Pages\Admin\AgendaKegiatan::class)->name('admin.agenda-kegiatan');
 });
