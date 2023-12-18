@@ -3,14 +3,31 @@
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-
         @foreach ($generatedMenu as $key => $menu)
-            <li class="nav-item" wire:key='{{ $key }}'>
-                <a class="nav-link collapsed" href="{{ $menu['link'] }}" wire:navigate>
-                    <i class="bx {{ $menu['icon'] }}"></i>
-                    <span>{{ $menu['text'] }}</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+            @if ($menu['children'] == false)
+                <li class="nav-item" wire:key='{{ $key }}'>
+                    <a class="nav-link collapsed" href="{{ $menu['link'] }}" wire:navigate>
+                        <i class="bx {{ $menu['icon'] }}"></i>
+                        <span>{{ $menu['text'] }}</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+            @else
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#{{ $menu['name'] }}" data-bs-toggle="collapse" href="#">
+                        <i class="bx {{ $menu['icon'] }}"></i><span>{{ $menu['text'] }}</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="{{ $menu['name'] }}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        @foreach ($menu['children'] as $childMenu)
+                            <li>
+                                <a href="{{ $childMenu['link'] }}" wire:navigate>
+                                    <i class="bx {{ $childMenu['icon'] }}"></i>
+                                    <span>{{ $childMenu['text'] }}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
         @endforeach
 
 

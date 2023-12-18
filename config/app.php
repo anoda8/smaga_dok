@@ -185,4 +185,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+
+    'eletter_token' => env('ELETTER_TOKEN'),
+    'eletter_url' => env('ELETTER_URL'),
+
 ];

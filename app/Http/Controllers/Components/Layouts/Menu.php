@@ -26,15 +26,43 @@ class Menu extends Component
             [
                 'name' => 'dashboard',
                 'link' => "",
-                'icon' => "bi-grid",
-                'text' => "Dashboard"
+                'icon' => "bx-grid",
+                'text' => "Dashboard",
+                'children' => false,
             ],
             [
                 'name' => 'agenda',
                 'link' => route('admin.agenda-kegiatan'),
                 'icon' => "bx-notepad",
-                'text' => "Agenda Kegiatan"
-            ]
+                'text' => "Agenda Kegiatan",
+                'children' => false,
+            ],
+            [
+                'name' => 'user',
+                'link' => '#',
+                'icon' => "bxs-user-account",
+                'text' => "Users",
+                'children' => [
+                    [
+                        'name' => 'admin',
+                        'link' => "/admin/users/admin",
+                        'icon' => "bxs-user",
+                        'text' => "Administrator",
+                    ],
+                    [
+                        'name' => 'guru',
+                        'link' => "/admin/users/guru",
+                        'icon' => "bxs-user",
+                        'text' => "Guru",
+                    ],
+                    [
+                        'name' => 'siswa',
+                        'link' => "/admin/users/siswa",
+                        'icon' => "bxs-user",
+                        'text' => "Siswa",
+                    ],
+                ],
+            ],
         ];
     }
 }

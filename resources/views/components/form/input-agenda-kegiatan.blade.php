@@ -12,7 +12,7 @@
                 <label for="" class="form-label">Pilih Jenis Surat
                     <i class="text-danger">*</i>
                 </label>
-                <select class="form-select" name="" id="">
+                <select class="form-select" wire:model="jenis_surat">
                     <option value="masuk">Surat Masuk</option>
                     <option value="keluar">Surat Keluar</option>
                     <option value="tugas">Surat Tugas</option>
@@ -22,13 +22,13 @@
                 <div class="col">
                     <div class="mb-3">
                         <label for="" class="form-label">Tahun</label>
-                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                        <input type="text" class="form-control" wire:model="tahun" aria-describedby="helpId" placeholder="">
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Surat</label>
-                        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+                        <input type="text" class="form-control" wire:model="nomor_surat" aria-describedby="helpId" placeholder="">
                     </div>
                 </div>
             </div>
@@ -36,6 +36,9 @@
               <label for="" class="form-label">Perihal</label>
               <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
             </div>
+        </div>
+        <div class="card-footer text-end {{ $searchForm ? "" : "d-none" }}">
+            <a wire:click="search" class="btn btn-primary" role="button">Cari Surat</a>
         </div>
     </div>
     <div class="card">
