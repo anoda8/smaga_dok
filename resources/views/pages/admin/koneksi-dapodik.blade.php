@@ -6,18 +6,22 @@
                 <div class="card-body">
                     <h4 class="card-title">Koneksi Dapodik</h4>
                     <div class="mb-3">
+                        <label for="ip_app" class="fw-bold mb-2">Alamat IP Aplikasi</label>
                         <input type="text" class="form-control" wire:model="ip_app" aria-describedby="helpId" placeholder="Alamat IP Aplikasi">
                         <small class="text-danger">@error('ip_app') {{ $message }} @enderror</small>
                     </div>
                     <div class="mb-3">
+                        <label for="ip_app" class="fw-bold mb-2">Alamat IP Dapodik</label>
                         <input type="text" class="form-control" wire:model="ip_dapodik" aria-describedby="helpId" placeholder="Alamat IP Dapodik">
                         <small class="text-danger">@error('ip_app') {{ $message }} @enderror</small>
                     </div>
                     <div class="mb-3">
+                        <label for="ip_app" class="fw-bold mb-2">Key Dapodik</label>
                         <input type="text" class="form-control" wire:model="key" aria-describedby="helpId" placeholder="Key Dapodik">
                         <small class="text-danger">@error('key') {{ $message }} @enderror</small>
                     </div>
                     <div class="mb-3">
+                        <label for="ip_app" class="fw-bold mb-2">NPSN Sekolah</label>
                         <input type="text" class="form-control" wire:model="npsn" aria-describedby="helpId" placeholder="NPSN">
                         <small class="text-danger">@error('npsn') {{ $message }} @enderror</small>
                     </div>

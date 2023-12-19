@@ -33,7 +33,7 @@ class InputAgendaKegiatan extends Component
 
         if($this->nomor_surat != null){
             if($this->jenis_surat == 'masuk'){
-                $result = Http::withToken(config('app.eletter_token'))->post(config('app.eletter_url').'/cari-surat-masuk/nomor-agenda', [
+                $result = Http::acceptJson()->withToken(config('app.eletter_token'))->post(config('app.eletter_url').'/cari-surat-masuk/nomor-agenda', [
                     'nomor_agenda' => $this->nomor_surat,
                     'tahun' => $this->tahun
                 ]);

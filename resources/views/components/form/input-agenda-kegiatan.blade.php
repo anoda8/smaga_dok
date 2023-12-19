@@ -19,13 +19,13 @@
                 </select>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                         <label for="" class="form-label">Tahun</label>
                         <input type="text" class="form-control" wire:model="tahun" aria-describedby="helpId" placeholder="">
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Surat</label>
                         <input type="text" class="form-control" wire:model="nomor_surat" aria-describedby="helpId" placeholder="">

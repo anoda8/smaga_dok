@@ -13,13 +13,20 @@ class KoneksiDapodik extends Component
     #[Validate('required')]
     public $ip_app, $ip_dapodik, $key, $npsn;
 
-
-    public function render()
-    {
+    public function mount(){
         $this->koneksi = Connection::get()->first();
         if($this->koneksi == null){
             $this->generateConnection();
         }
+
+        $this->ip_app = $this->koneksi->ip_app;
+        $this->ip_dapodik = $this->koneksi->ip_dapodik;
+        $this->key = $this->koneksi->key;
+        $this->npsn = $this->koneksi->npsn;
+    }
+
+    public function render()
+    {
         return view('pages.admin.koneksi-dapodik', ['koneksi' => $this->koneksi]);
     }
 
@@ -40,11 +47,11 @@ class KoneksiDapodik extends Component
     }
 
     public function generateConnection(){
-        // Connection::create([
-        //     'ip_app' => config('dapodik_ip'),
-        //     'ip_dapodik' => config('dapodik_ip_aplikasi'),
-        //     'key' => config('dapodik_key'),
-        //     'npsn' => config('dapodik_npsn'),
-        // ]);
+        Connection::create([
+            'ip_app' => config('app.dapodik_ip'),
+            'ip_dapodik' => config('app.dapodik_ip_aplikasi'),
+            'key' => config('app.dapodik_key'),
+            'npsn' => config('app.dapodik_npsn'),
+        ]);
     }
 }
