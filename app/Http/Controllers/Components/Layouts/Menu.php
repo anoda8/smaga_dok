@@ -63,6 +63,20 @@ class Menu extends Component
                     ],
                 ],
             ],
+            [
+                'name' => 'pengaturan',
+                'link' => '#',
+                'icon' => "bxs-cog",
+                'text' => "Pengaturan",
+                'children' => [
+                    [
+                        'name' => 'dapodik',
+                        'link' => route('admin.koneksi-dapodik'),
+                        'icon' => "bxs-wire",
+                        'text' => "Koneksi Dapodik",
+                    ],
+                ],
+            ],
         ];
     }
 }

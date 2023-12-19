@@ -189,4 +189,9 @@ return [
     'eletter_token' => env('ELETTER_TOKEN'),
     'eletter_url' => env('ELETTER_URL'),
 
+    'dapodik_ip' => ('DAPODIK_IP'),
+    'dapodik_ip_aplikasi' => ('DAPODIK_IP_APLIKASI'),
+    'dapodik_key' => ('DAPODIK_KEY'),
+    'dapodik_npsn' => ('DAPODIK_NPSN'),
+
 ];

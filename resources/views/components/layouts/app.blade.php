@@ -190,7 +190,6 @@
   <!-- Optional: Place to the bottom of scripts -->
   <script>
     const myModal = new bootstrap.Modal(document.getElementById('modalLogout'), options)
-
   </script>
 
   <!-- Vendor JS Files -->
@@ -198,6 +197,28 @@
   <script src="/storage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Template Main JS File -->
   <script src="/storage/assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        window.addEventListener('show-alert', event => {
+            Toast.fire({
+                icon: event.detail[0].icon,
+                title: event.detail[0].message
+            })
+        })
+    </script>
 
 </body>
 

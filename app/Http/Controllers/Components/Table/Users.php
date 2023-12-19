@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Components\Table;
 
+use App\Models\User;
 use Livewire\Component;
 
 class Users extends Component
@@ -14,6 +15,7 @@ class Users extends Component
 
     public function render()
     {
-        return view('components.table.users');
+        $users = User::whereHasRole($this->level)->get();
+        return view('components.table.users', compact('users'));
     }
 }
