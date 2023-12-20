@@ -56,7 +56,20 @@ class InputAgendaKegiatan extends Component
 
     #[On('surat-terpilih')]
     public function pilih($suratId){
-        dd($this->jenisSurat);
+        switch ($this->jenisSurat) {
+            case 'masuk':
+                $this->pilihSuratMasuk($suratId);
+                break;
+            case 'keluar':
+                # code...
+                break;
+            case 'tugas':
+                # code...
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     public function searchSuratMasuk(){
