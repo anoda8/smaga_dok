@@ -17,12 +17,14 @@ class KoneksiDapodik extends Component
         $this->koneksi = Connection::get()->first();
         if($this->koneksi == null){
             $this->generateConnection();
+        }else{
+            $this->ip_app = $this->koneksi->ip_app;
+            $this->ip_dapodik = $this->koneksi->ip_dapodik;
+            $this->key = $this->koneksi->key;
+            $this->npsn = $this->koneksi->npsn;
         }
 
-        $this->ip_app = $this->koneksi->ip_app;
-        $this->ip_dapodik = $this->koneksi->ip_dapodik;
-        $this->key = $this->koneksi->key;
-        $this->npsn = $this->koneksi->npsn;
+
     }
 
     public function render()
