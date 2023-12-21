@@ -79,7 +79,11 @@ class PencarianSurat extends Component
                 $this->searchForm = false;
                 $this->suratMasukFound = $arrRes->data;
                 $this->dispatch('show-alert', [
-                    'icon' => 'error', 'message' => "Ditemukan ".count($arrRes->data)." surat masuk."
+                    'icon' => 'success', 'message' => "Ditemukan ".count($arrRes->data)." surat masuk."
+                ]);
+            }else{
+                $this->dispatch('show-alert', [
+                    'icon' => 'error', 'message' => "Tidak ditemukan."
                 ]);
             }
         }else{
@@ -94,6 +98,10 @@ class PencarianSurat extends Component
                     $this->suratMasukFound = $arrRes->data;
                     $this->dispatch('show-alert', [
                         'icon' => 'success', 'message' => "Ditemukan 1 surat masuk."
+                    ]);
+                }else{
+                    $this->dispatch('show-alert', [
+                        'icon' => 'error', 'message' => "Tidak ditemukan."
                     ]);
                 }
             }
