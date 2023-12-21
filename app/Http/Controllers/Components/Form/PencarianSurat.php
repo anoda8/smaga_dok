@@ -78,6 +78,9 @@ class PencarianSurat extends Component
             if(count($arrRes->data) > 0){
                 $this->searchForm = false;
                 $this->suratMasukFound = $arrRes->data;
+                $this->dispatch('show-alert', [
+                    'icon' => 'error', 'message' => "Ditemukan ".count($arrRes->data)." surat masuk."
+                ]);
             }
         }else{
             if($this->nomor_surat != null){
@@ -89,6 +92,9 @@ class PencarianSurat extends Component
                 if(count($arrRes->data) > 0){
                     $this->searchForm = false;
                     $this->suratMasukFound = $arrRes->data;
+                    $this->dispatch('show-alert', [
+                        'icon' => 'success', 'message' => "Ditemukan 1 surat masuk."
+                    ]);
                 }
             }
         }

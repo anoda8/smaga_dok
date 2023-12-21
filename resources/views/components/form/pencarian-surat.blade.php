@@ -46,7 +46,7 @@
             <div class="card-body p-2">
                 <ul class="list-group">
                     @foreach ($suratMasukFound as $suratMasuk)
-                        <li wire:click="konfirmasiPilih('{{ $suratMasuk->id }}')" class="list-group-item list-group-item-action" style="cursor: pointer;">[{{ $suratMasuk->tahun }}][{{ $suratMasuk->nomor_agenda }}]&nbsp;{{ $suratMasuk->perihal }}</li>
+                        <li wire:click="konfirmasiPilih('{{ $suratMasuk->id }}')" class="list-group-item list-group-item-warning list-group-item-action" style="cursor: pointer;">[{{ $suratMasuk->tahun }}][{{ $suratMasuk->nomor_agenda }}]&nbsp;{{ $suratMasuk->perihal }}</li>
                     @endforeach
                 </ul>
             </div>
