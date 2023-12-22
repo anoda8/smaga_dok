@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="/storage/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -196,6 +197,7 @@
   <script src="/storage/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="/storage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Template Main JS File -->
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
   <script src="/storage/assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
