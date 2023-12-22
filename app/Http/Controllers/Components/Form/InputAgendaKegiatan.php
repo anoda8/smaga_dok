@@ -86,18 +86,21 @@ class InputAgendaKegiatan extends Component
         $getKontributor = Http::acceptJson()->withToken(config('app.eletter_token'))->post(config('app.eletter_api_url').'/disposisi/', [
             'tahun_agenda' => $this->nomorSurat,
         ]);
-        $dataKontributor = $getKontributor['data'];
+        $dataKontributor = json_decode($getKontributor)->data;
         $emptyUser = "";
         foreach($dataKontributor as $kontributor){
-            $getUser = User::where('username', $kontributor['user']['username']);
+            $getUser = User::where('username', $kontributor->user->username);
             // dd($getUser->exists());
             if($getUser->exists()){
                 Contributor::updateOrCreate([
                     'activity_id' => $this->savedId,
-                    'user_id' => $getUser->get()->id,
+                    'user_id' => $getUser->get()->first()->id,
+                ], [
+                    'activity_id' => $this->savedId,
+                    'user_id' => $getUser->get()->first()->id,
                 ]);
             }else{
-                $emptyUser .= $kontributor['user']['name'].", ";
+                $emptyUser .= $kontributor->user->name.", ";
             }
         }
         // dd($emptyUser);
