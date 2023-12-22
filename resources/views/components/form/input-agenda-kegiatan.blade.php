@@ -44,12 +44,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="tanggal_mulai" class="form-label fw-bold">Tanggal Mulai Kegiatan</label>
-                    <input type="date" wire:model.live="startDate" class="form-control" name="tanggal_mulai" id="tanggal_mulai" aria-describedby="helpId" placeholder="Tanggal mulai kegiatan">
+                    <input type="date" wire:model.live="startDate" class="form-control" aria-describedby="helpId" placeholder="">
                     @error('startDate') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="mb-3">
                     <label for="tanggal_mulai" class="form-label fw-bold">Tanggal Selesai Kegiatan</label>
-                    <input type="date" wire:model="endDate" class="form-control" name="tanggal_mulai" id="tanggal_mulai" aria-describedby="helpId" placeholder="Tanggal mulai kegiatan">
+                    <input type="date" wire:model="endDate" class="form-control" aria-describedby="helpId" placeholder="">
+                    @error('endDate') <small class="text-danger">{{ $message }}</small> @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="tanggal_mulai" class="form-label fw-bold">Kontributor</label>
+                    <input type="text" class="form-control" aria-describedby="helpId" placeholder="">
                     @error('endDate') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
             </div>

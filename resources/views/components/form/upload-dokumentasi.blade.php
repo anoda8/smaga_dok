@@ -4,5 +4,8 @@
         <div class="card-header bg-info text-dark">
             Dokumentasi {{ $savedId }}
         </div>
+        <div class="card-body">
+
+        </div>
     </div>
 </div>

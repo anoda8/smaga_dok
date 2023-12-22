@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Components\Form;
 
 use App\Models\Activity;
+use App\Models\Contributor;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -66,10 +68,40 @@ class InputAgendaKegiatan extends Component
         if($savedActivity){
             $this->savedId = $savedActivity->id;
             $this->dispatch('agenda-kegiatan-tersimpan', savedId: $this->savedId);
-            $this->dispatch('show-alert', [
-                'icon' => 'success', 'message' => "Kegiatan tersimpan."
-            ]);
+            $savedContributor = $this->saveContributor();
+            if($savedContributor === true){
+                $this->dispatch('show-alert', [
+                    'icon' => 'success', 'message' => "Kegiatan tersimpan."
+                ]);
+            }else{
+                $this->dispatch('show-alert', [
+                    'icon' => 'warning', 'message' => $this->saveContributor()." tidak ditemukan dalam data user."
+                ]);
+            }
+
         }
+    }
+
+    public function saveContributor(){
+        $getKontributor = Http::acceptJson()->withToken(config('app.eletter_token'))->post(config('app.eletter_api_url').'/disposisi/', [
+            'tahun_agenda' => $this->nomorSurat,
+        ]);
+        $dataKontributor = $getKontributor['data'];
+        $emptyUser = "";
+        foreach($dataKontributor as $kontributor){
+            $getUser = User::where('username', $kontributor['user']['username']);
+            // dd($getUser->exists());
+            if($getUser->exists()){
+                Contributor::updateOrCreate([
+                    'activity_id' => $this->savedId,
+                    'user_id' => $getUser->get()->id,
+                ]);
+            }else{
+                $emptyUser .= $kontributor['user']['name'].", ";
+            }
+        }
+        // dd($emptyUser);
+        return $emptyUser == "" ? true : $emptyUser;
     }
 
     #[\Livewire\Attributes\On('hapus-agenda-kegiatan')]
