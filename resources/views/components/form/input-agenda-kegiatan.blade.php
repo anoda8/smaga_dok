@@ -12,19 +12,19 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="mb-3">
-                            <label for="" class="form-label fw-bold">Jenis Surat</label>
+                            <label class="form-label fw-bold">Jenis Surat</label>
                             <input disabled type="text" wire:model="jenisSurat" class="form-control" aria-describedby="helpId" placeholder="">
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <div class="mb-3">
-                            <label for="" class="form-label fw-bold">Tahun - Nomor Surat</label>
+                            <label class="form-label fw-bold">Tahun - Nomor Surat</label>
                             <input disabled type="text" wire:model="nomorSurat" class="form-control" aria-describedby="helpId" placeholder="">
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label fw-bold">Perihal</label>
+                    <label class="form-label fw-bold">Perihal</label>
                     <div class="input-group">
                         <input disabled type="text" wire:model="perihal" class="form-control" aria-describedby="helpId" placeholder="">
                         <a class="btn btn-info" role="button" onclick="window.open('{{ $hyperlink }}', 'popUpWindow', 'height = 600, width = 500, left = 100, top = 100, scrollbars = yes, resizable = yes, menubar = no, toolbar = yes, location = no, directories = no, status = yes')">
@@ -38,22 +38,22 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label fw-bold">Nama Kegiatan</label>
+                    <label class="form-label fw-bold">Nama Kegiatan</label>
                     <input type="text" class="form-control" wire:model="namaKegiatan" aria-describedby="helpId" placeholder="">
                     @error('namaKegiatan') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="tanggal_mulai" class="form-label fw-bold">Tanggal Mulai Kegiatan</label>
+                    <label class="form-label fw-bold">Tanggal Mulai Kegiatan</label>
                     <input type="date" wire:model.live="startDate" class="form-control" aria-describedby="helpId" placeholder="">
                     @error('startDate') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="tanggal_mulai" class="form-label fw-bold">Tanggal Selesai Kegiatan</label>
+                    <label class="form-label fw-bold">Tanggal Selesai Kegiatan</label>
                     <input type="date" wire:model="endDate" class="form-control" aria-describedby="helpId" placeholder="">
                     @error('endDate') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="tanggal_mulai" class="form-label fw-bold">Kontributor</label>
+                    <label class="form-label fw-bold">Kontributor</label>
                     <input type="text" class="form-control" aria-describedby="helpId" placeholder="">
                     @error('endDate') <small class="text-danger">{{ $message }}</small> @enderror
                 </div>
@@ -89,7 +89,7 @@
             Unggah Foto
         </div>
         <div class="card-body pt-4">
-            <form method="post" action="{{url('image/upload/store')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
+            <form method="post" action="{{url('/admin/upload-dokumentasi')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
                 @csrf
             </form>
         </div>
@@ -120,25 +120,22 @@
     });
 </script>
 <script type="text/javascript">
-        Dropzone.options.dropzone =
-        {
+    Dropzone.options.dropzone =
+    {
+        dictDefaultMessage: "Klik atau geser file kesini",
         maxFilesize: 12,
-        renameFile: function(file) {
-            var dt = new Date();
-            var time = dt.getTime();
-           return time+file.name;
-        },
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         addRemoveLinks: true,
         timeout: 5000,
-        success: function(file, response)
-        {
+        success:function(file, response){
             console.log(response);
+            file.previewElement.querySelector('[data-dz-name]').innerHTML = response.success;
         },
-        error: function(file, response)
-        {
-           return false;
+        removedfile:function(file){
+            var filename = file.previewElement.querySelector('[data-dz-name]').innerHTML;
+            Livewire.dispatch('hapus-foto', {namaFile: filename});
+            file.previewElement.remove();
         }
-};
+    };
 </script>
 @endpush

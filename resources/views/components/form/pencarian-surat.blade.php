@@ -9,7 +9,7 @@
         </div>
         <div class="card-body p-4 {{ $searchForm ? "" : "d-none" }}">
             <div class="mb-3">
-                <label for="" class="form-label">Pilih Jenis Surat
+                <label class="form-label">Pilih Jenis Surat
                     <i class="text-danger">*</i>
                 </label>
                 <select class="form-select" wire:model="jenisSurat">
@@ -21,19 +21,19 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
-                        <label for="" class="form-label">Tahun</label>
+                        <label class="form-label">Tahun</label>
                         <input type="text" class="form-control" wire:model="tahun" aria-describedby="helpId" placeholder="">
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="mb-3">
-                        <label for="" class="form-label">Nomor Surat</label>
+                        <label class="form-label">Nomor Surat</label>
                         <input type="text" class="form-control" wire:model="nomor_surat" aria-describedby="helpId" placeholder="">
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Perihal</label>
+              <label class="form-label">Perihal</label>
               <input type="text" class="form-control" wire:model="perihal" aria-describedby="helpId" placeholder="">
             </div>
         </div>

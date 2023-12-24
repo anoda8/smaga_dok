@@ -6,7 +6,7 @@
         @foreach ($generatedMenu as $key => $menu)
             @if ($menu['children'] == false)
                 <li class="nav-item" wire:key='{{ $key }}'>
-                    <a class="nav-link collapsed" href="{{ $menu['link'] }}" wire:navigate>
+                    <a class="nav-link collapsed" href="{{ $menu['link'] }}" @if(!isset($menu['navigate'])) wire:navigate @endif>
                         <i class="bx {{ $menu['icon'] }}"></i>
                         <span>{{ $menu['text'] }}</span>
                     </a>
@@ -19,7 +19,8 @@
                     <ul id="{{ $menu['name'] }}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         @foreach ($menu['children'] as $childMenu)
                             <li>
-                                <a href="{{ $childMenu['link'] }}" wire:navigate>
+
+                                <a href="{{ $childMenu['link'] }}" @if(!isset($menu['navigate'])) wire:navigate @endif>
                                     <i class="bx {{ $childMenu['icon'] }}"></i>
                                     <span>{{ $childMenu['text'] }}</span>
                                 </a>

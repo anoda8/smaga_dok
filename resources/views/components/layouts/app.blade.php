@@ -188,17 +188,13 @@
   </div>
 
 
-  <!-- Optional: Place to the bottom of scripts -->
-  <script>
-    const myModal = new bootstrap.Modal(document.getElementById('modalLogout'), options)
-  </script>
 
   <!-- Vendor JS Files -->
-  <script src="/storage/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  {{-- <script src="/storage/assets/vendor/apexcharts/apexcharts.min.js"></script> --}}
   <script src="/storage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Template Main JS File -->
   <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-  <script src="/storage/assets/js/main.js"></script>
+  {{-- <script src="/storage/assets/js/main.js"></script> --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="text/javascript">
