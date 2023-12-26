@@ -119,16 +119,9 @@ class InputAgendaKegiatan extends Component
         }
     }
 
-    #[\Livewire\Attributes\On('hapus-foto')]
-    public function hapusFoto($namaFile){
-        // dd("fdasdfas");
-    }
-
     public function toggleDetailKegiatan(){
         $this->showDetailKegiatanForm = !$this->showDetailKegiatanForm;
     }
 
-    public function toggleDokumentasi(){
-        $this->showDokumentasiForm = !$this->showDokumentasiForm;
-    }
+
 }

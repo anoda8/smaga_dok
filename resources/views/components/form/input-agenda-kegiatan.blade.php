@@ -60,7 +60,7 @@
             </div>
             <div class="card-footer text-end {{ $showDetailKegiatanForm ? "" : "d-none" }}">
                 @if ($savedId != null)
-                    <a wire:click='toggleDokumentasi' class="btn btn-info" role="button">
+                    <a wire:click="$dispatch('show-form-upload-dokumentasi', {savedId: {{ $savedId }}})" class="btn btn-info" role="button">
                         <i class="bx bx-plus"></i>
                         Dokumentasi
                     </a>
@@ -84,21 +84,6 @@
             </div>
         </div>
     </form>
-    <div class="card">
-        <div class="card-header bg-info fw-bold text-dark">
-            Unggah Foto
-        </div>
-        <div class="card-body pt-4">
-            <form method="post" action="{{url('/admin/upload-dokumentasi')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
-                @csrf
-            </form>
-        </div>
-    </div>
-    {{-- <div class="card">
-        <div class="card-header bg-success text-white">
-            Publikasi
-        </div>
-    </div> --}}
 </div>
 @push('scripts')
 <script>
@@ -118,24 +103,5 @@
             }
         })
     });
-</script>
-<script type="text/javascript">
-    Dropzone.options.dropzone =
-    {
-        dictDefaultMessage: "Klik atau geser file kesini",
-        maxFilesize: 12,
-        acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        addRemoveLinks: true,
-        timeout: 5000,
-        success:function(file, response){
-            console.log(response);
-            file.previewElement.querySelector('[data-dz-name]').innerHTML = response.success;
-        },
-        removedfile:function(file){
-            var filename = file.previewElement.querySelector('[data-dz-name]').innerHTML;
-            Livewire.dispatch('hapus-foto', {namaFile: filename});
-            file.previewElement.remove();
-        }
-    };
 </script>
 @endpush
