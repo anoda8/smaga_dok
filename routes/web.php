@@ -32,5 +32,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('/agenda-kegiatan', App\Http\Controllers\Pages\Admin\AgendaKegiatan::class)->name('admin.agenda-kegiatan');
     Route::get('/koneksi-dapodik', App\Http\Controllers\Pages\Admin\KoneksiDapodik::class)->name('admin.koneksi-dapodik');
     Route::get('/users/{level}', App\Http\Controllers\Pages\Admin\Users::class)->name('admin.users');
+    Route::get('/dokumentasi/{activityId}', App\Http\Controllers\Pages\Admin\Dokumentasi::class)->name('admin.dokumentasi');
     Route::post('/upload-dokumentasi', [App\Http\Controllers\Components\Form\UploadDokumentasi::class, 'doUpload'])->name('admin.upload-dokumentasi');
 });

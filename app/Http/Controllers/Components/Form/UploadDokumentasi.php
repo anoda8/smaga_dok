@@ -10,10 +10,12 @@ class UploadDokumentasi extends Component
 {
     public $savedId;
     public $activity;
-    public $nomorSurat;
+    public $showPublikasi = true;
+    public $fotoSampul;
 
     public function mount($savedId){
         $this->savedId = $savedId;
+        $this->activity = Activity::find($this->savedId);
     }
 
     public function render()
@@ -24,21 +26,35 @@ class UploadDokumentasi extends Component
     public function doUpload(Request $request){
         $image = $request->file('file');
         $imageName = md5(time().rand(1,100)).".".$image->extension();
-        $image->move(public_path('temp-dokumentasi/'.$this->savedId), $imageName);
-        return response()->json(['success' => $this->savedId]);
-    }
-
-    #[\Livewire\Attributes\On('show-form-upload-dokumentasi')]
-    public function setSavedId($savedId){
-        $this->savedId = $savedId;
-        $this->activity = Activity::find($this->savedId);
-        $this->nomorSurat = $this->activity->nomor_surat;
-        // dd($this->nomorSurat);
-        // dd($this->activity);
+        $image->move(public_path('temp-dokumentasi/'.$request->folder."/"), $imageName);
+        return response()->json(['success' => $imageName]);
     }
 
     #[\Livewire\Attributes\On('hapus-foto')]
     public function hapusFoto($namaFile){
-        // dd("fdasdfas");
+        if(file_exists(public_path('temp-dokumentasi/'.$this->activity->uuid."/".$namaFile))){
+            unlink(public_path('temp-dokumentasi/'.$this->activity->uuid."/".$namaFile));
+        }else{
+            $this->dispatch('show-alert', [
+                'icon' => 'error', 'message' => "File yang dihapus tidak ditemukan."
+            ]);
+        }
+    }
+
+    #[\Livewire\Attributes\On('foto-sampul-dipilih')]
+    public function tetapkanFotoSampul($fotoFile){
+        $this->fotoSampul = $fotoFile;
+        $this->dispatch('show-alert', [
+            'icon' => 'success', 'message' => "Foto sampul dipilih."
+        ]);
+    }
+
+    public function simpanDokumentasi(){
+
+    }
+
+    public function togglePublikasi(){
+        $this->dispatch('reload-file-list');
+        $this->showPublikasi = !$this->showPublikasi;
     }
 }

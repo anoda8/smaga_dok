@@ -44,9 +44,11 @@ class InputAgendaKegiatan extends Component
 
     public function simpan(){
         $this->validate();
+        $uuid = md5(time());
         $savedActivity = null;
         if($this->savedId == null){
             $savedActivity = Activity::create([
+                "uuid" => $uuid,
                 "user_id" => auth()->user()->id,
                 "start_date" => $this->startDate,
                 "end_date" => $this->endDate,
@@ -55,6 +57,8 @@ class InputAgendaKegiatan extends Component
                 "nomor_surat" => $this->nomorSurat,
                 "hyperlink_surat" => $this->hyperlink,
             ]);
+
+            mkdir(public_path('temp-dokumentasi/'.$savedActivity->uuid.'/'));
         }else{
             $savedActivity = Activity::find($this->savedId);
             $updateSavedActivity = $savedActivity;
@@ -63,6 +67,10 @@ class InputAgendaKegiatan extends Component
                 "end_date" => $this->endDate,
                 "activity" => $this->namaKegiatan,
             ]);
+
+            if(!is_dir(public_path('temp-dokumentasi/'.$savedActivity->uuid.'/'))){
+                mkdir(public_path('temp-dokumentasi/'.$savedActivity->uuid.'/'));
+            }
         }
 
         if($savedActivity){

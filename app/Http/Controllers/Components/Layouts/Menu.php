@@ -36,7 +36,7 @@ class Menu extends Component
                 'icon' => "bx-notepad",
                 'text' => "Agenda Kegiatan",
                 'children' => false,
-                'navigate' => true,
+                // 'navigate' => true,
             ],
             [
                 'name' => 'user',

@@ -60,13 +60,9 @@
             </div>
             <div class="card-footer text-end {{ $showDetailKegiatanForm ? "" : "d-none" }}">
                 @if ($savedId != null)
-                    <a wire:click="$dispatch('show-form-upload-dokumentasi', {savedId: {{ $savedId }}})" class="btn btn-info" role="button">
+                    <a href="/admin/dokumentasi/{{ $savedId }}" class="btn btn-info" role="button">
                         <i class="bx bx-plus"></i>
-                        Dokumentasi
-                    </a>
-                    <a name="" id="" class="btn btn-success" href="#" role="button">
-                        <i class="bx bx-plus"></i>
-                        Publikasi
+                        Lanjut
                     </a>
                 @endif
             </div>
