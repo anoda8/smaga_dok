@@ -49,6 +49,22 @@ class UploadDokumentasi extends Component
         ]);
     }
 
+    public function lanjutPublikasi(){
+        if($this->fotoSampul == null){
+            $this->dispatch('show-alert', [
+                'icon' => 'error', 'message' => "Pilih foto sampul terlebih dahulu."
+            ]);
+            return;
+        }else{
+            $this->dispatch('simpan-dokumentasi', ['publikasi' => true]);
+        }
+    }
+
+    #[\Livewire\Attributes\On('lanjut-publikasi')]
+    public function redirectPublikasi(){
+        return $this->redirect('/admin/publikasi/'.$this->activity->id, navigate:true);
+    }
+
     public function simpanDokumentasi(){
         $this->dispatch('simpan-dokumentasi');
     }

@@ -39,7 +39,7 @@ class Menu extends Component
             ],
             [
                 'name' => 'agenda',
-                'link' => route('admin.agenda-kegiatan'),
+                'link' => '',
                 'icon' => "bx-notepad",
                 'text' => "Agenda Kegiatan",
                 'children' => [

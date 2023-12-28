@@ -27,13 +27,14 @@ class AturFotoDokumentasi extends Component
     }
 
     #[\Livewire\Attributes\On('simpan-dokumentasi')]
-    public function simpanDokumentasi(){
+    public function simpanDokumentasi($publikasi = false){
         $fileList = scandir(public_path('temp-dokumentasi/'.$this->uuid));
         foreach ($fileList as $key => $file) {
             if(strlen($file) > 5){
                 GalleryFile::create([
                     'activity_id' => $this->activityId,
                     'photo_url' => $file,
+                    'sampul' => $file == $this->fotoSampul ? true : false,
                 ]);
             }
         }
@@ -41,6 +42,10 @@ class AturFotoDokumentasi extends Component
         $this->dispatch('show-alert', [
             'icon' => 'success', 'message' => "Foto tersimpan dalam kegiatan."
         ]);
+
+        if($publikasi == true){
+            $this->dispatch('lanjut-publikasi');
+        }
     }
 
     #[\Livewire\Attributes\On('foto-sampul-dipilih')]

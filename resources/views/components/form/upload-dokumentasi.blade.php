@@ -23,12 +23,11 @@
         </div>
     </div>
     <div class="{{ $showPublikasi == true ? "" : "d-none" }}">
-        {{-- <livewire:components.form.publikasi :uuid="$activity->uuid" /> --}}
         <livewire:components.form.atur-foto-dokumentasi :uuid="$activity->uuid" :activityId="$activity->id" />
     </div>
     <div class="card">
         <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-primary" wire:click="togglePublikasi" role="button">Lanjut Publikasi <i class="bx bxs-plane-take-off"></i></a>
+            <a class="btn btn-primary" wire:click.prevent="lanjutPublikasi" role="button">Lanjut Publikasi <i class="bx bxs-plane-take-off"></i></a>
             <a class="btn btn-success" wire:click="simpanDokumentasi" role="button">Selesai <i class="bx bx-like"></i></a>
         </div>
     </div>
