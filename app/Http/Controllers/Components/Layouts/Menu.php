@@ -31,12 +31,31 @@ class Menu extends Component
                 'children' => false,
             ],
             [
+                'name' => 'report',
+                'link' => "",
+                'icon' => "bxs-report",
+                'text' => "Laporan",
+                'children' => false,
+            ],
+            [
                 'name' => 'agenda',
                 'link' => route('admin.agenda-kegiatan'),
                 'icon' => "bx-notepad",
                 'text' => "Agenda Kegiatan",
-                'children' => false,
-                // 'navigate' => true,
+                'children' => [
+                    [
+                        'name' => 'agenda-personal',
+                        'link' => route('admin.agenda-personal'),
+                        'icon' => '',
+                        'text' => "Agenda Personal",
+                    ],
+                    [
+                        'name' => 'agenda-publik',
+                        'link' => route('admin.agenda-publik'),
+                        'icon' => '',
+                        'text' => "Agenda Publik",
+                    ],
+                ],
             ],
             [
                 'name' => 'user',

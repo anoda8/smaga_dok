@@ -24,7 +24,7 @@
     </div>
     <div class="{{ $showPublikasi == true ? "" : "d-none" }}">
         {{-- <livewire:components.form.publikasi :uuid="$activity->uuid" /> --}}
-        <livewire:components.form.atur-foto-dokumentasi :uuid="$activity->uuid" />
+        <livewire:components.form.atur-foto-dokumentasi :uuid="$activity->uuid" :activityId="$activity->id" />
     </div>
     <div class="card">
         <div class="card-footer d-flex justify-content-between">

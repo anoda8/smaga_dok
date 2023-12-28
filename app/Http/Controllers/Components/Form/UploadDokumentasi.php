@@ -50,7 +50,7 @@ class UploadDokumentasi extends Component
     }
 
     public function simpanDokumentasi(){
-
+        $this->dispatch('simpan-dokumentasi');
     }
 
     public function togglePublikasi(){

@@ -29,6 +29,8 @@ Auth::routes([
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('/home', App\Http\Controllers\Pages\Admin\Dashboard::class)->name('admin.home');
+    Route::get('/agenda-personal', App\Http\Controllers\Pages\Admin\AgendaPersonal::class)->name('admin.agenda-personal');
+    Route::get('/agenda-publik', App\Http\Controllers\Pages\Admin\AgendaPublik::class)->name('admin.agenda-publik');
     Route::get('/agenda-kegiatan', App\Http\Controllers\Pages\Admin\AgendaKegiatan::class)->name('admin.agenda-kegiatan');
     Route::get('/koneksi-dapodik', App\Http\Controllers\Pages\Admin\KoneksiDapodik::class)->name('admin.koneksi-dapodik');
     Route::get('/users/{level}', App\Http\Controllers\Pages\Admin\Users::class)->name('admin.users');
