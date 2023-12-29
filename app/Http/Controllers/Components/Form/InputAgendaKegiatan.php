@@ -24,6 +24,12 @@ class InputAgendaKegiatan extends Component
     #[Validate('required')]
     public $namaKegiatan, $startDate, $endDate;
 
+    public function mount(){
+        if($this->savedId != null){
+            $this->fillForm();
+        }
+    }
+
     public function render()
     {
         return view('components.form.input-agenda-kegiatan');
@@ -129,6 +135,16 @@ class InputAgendaKegiatan extends Component
 
     public function toggleDetailKegiatan(){
         $this->showDetailKegiatanForm = !$this->showDetailKegiatanForm;
+    }
+
+    public function fillForm(){
+        $activity = Activity::find($this->savedId);
+        $this->jenisSurat = $activity->jenis_surat;
+        $this->nomorSurat = $activity->nomor_surat;
+        $this->perihal = $activity->activity;
+        $this->namaKegiatan = $activity->activity;
+        $this->startDate = $activity->start_date;
+        $this->endDate = $activity->end_date;
     }
 
 
