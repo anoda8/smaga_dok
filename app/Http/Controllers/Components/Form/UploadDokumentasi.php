@@ -62,7 +62,7 @@ class UploadDokumentasi extends Component
 
     #[\Livewire\Attributes\On('lanjut-publikasi')]
     public function redirectPublikasi(){
-        return $this->redirect('/admin/publikasi/'.$this->activity->id, navigate:true);
+        return $this->redirect('/admin/publikasi/'.$this->activity->id);
     }
 
     public function simpanDokumentasi(){

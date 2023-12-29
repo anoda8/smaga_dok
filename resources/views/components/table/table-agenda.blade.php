@@ -24,7 +24,7 @@
                     <td class="text-center d-none d-md-table-cell">{{ \Carbon\Carbon::parse($agenda->start_date)->format("d/m/Y") }}</td>
                     <td class="text-center d-none d-md-table-cell">{{ \Carbon\Carbon::parse($agenda->end_date)->format("d/m/Y") }}</td>
                     <td class="text-center">
-                        <a class="btn btn-sm btn-info" href="#" role="button">
+                        <a class="btn btn-sm btn-info" href="{{ route('admin.detail-agenda', $agenda->id) }}" role="button">
                             <i class="bx bx-pencil"></i>
                         </a>
                     </td>
