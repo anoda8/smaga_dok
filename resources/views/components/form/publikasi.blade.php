@@ -10,9 +10,9 @@
                 <label for="" class="form-label">Judul Posting</label>
                 <input type="text" class="form-control" wire:model="title" aria-describedby="helpId" placeholder="">
                 </div>
-                <div class="mb-3">
-                <label for="" class="form-label">Narasi</label>
-                    <textarea wire:ignore class="form-control" wire:model="content" rows="3"></textarea>
+                <div class="mb-3" wire:ignore>
+                    <label for="" class="form-label">Narasi</label>
+                    <textarea class="form-control editor" id="editor" wire:model="content" rows="5"></textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
@@ -34,20 +34,25 @@
         </div>
     </form>
 </div>
+@push('styles')
+<style>
+    .ck-editor__editable[role="textbox"] {
+        min-height: 200px;
+    }
+</style>
+@endpush
 @push('scripts')
-    <script src="https://cdn.tiny.cloud/1/s5h0m76l17kvvailfjlgrjsp12uyipgnlht6j02lanm1lkdq/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [
-        { value: 'First.Name', title: 'First Name' },
-        { value: 'Email', title: 'Email' },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-    });
-    </script>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                @this.set('content', editor.getData());
+            })
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endpush

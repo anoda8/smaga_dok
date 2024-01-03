@@ -34,7 +34,7 @@ class Publikasi extends Component
     }
 
     public function simpan(){
-        $this->validate();
+        // $this->validate();
         dd($this->content);
         Post::updateOrCreate([
             'activity_id' => $this->activity->id

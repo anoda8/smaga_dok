@@ -29,7 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="/storage/assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-
+    @stack('styles')
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: May 30 2023 with Bootstrap v5.3.0
