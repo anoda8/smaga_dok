@@ -16,9 +16,9 @@ class TableAgenda extends Component
     public function render()
     {
         if($this->mode == 'personal'){
-            $agendas = Activity::where('user_id', auth()->user()->id)->get();
+            $agendas = Activity::with('galleries')->where('user_id', auth()->user()->id)->get();
         }else{
-            $agendas = Activity::all();
+            $agendas = Activity::with('galleries')->get();
         }
 
         return view('components.table.table-agenda', compact('agendas'));

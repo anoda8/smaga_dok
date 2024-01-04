@@ -30,13 +30,13 @@ class Menu extends Component
                 'text' => "Dashboard",
                 'children' => false,
             ],
-            [
-                'name' => 'report',
-                'link' => "",
-                'icon' => "bxs-report",
-                'text' => "Laporan",
-                'children' => false,
-            ],
+            // [
+            //     'name' => 'report',
+            //     'link' => "",
+            //     'icon' => "bxs-report",
+            //     'text' => "Laporan",
+            //     'children' => false,
+            // ],
             [
                 'name' => 'agenda',
                 'link' => '',

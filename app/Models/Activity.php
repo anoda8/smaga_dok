@@ -23,4 +23,8 @@ class Activity extends Model
         "nomor_surat",
         "hyperlink_surat",
     ];
+
+    public function galleries(){
+        return $this->hasMany(GalleryFile::class, 'activity_id');
+    }
 }

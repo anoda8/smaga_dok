@@ -9,11 +9,17 @@
                 <div class="mb-3">
                 <label for="" class="form-label">Judul Posting</label>
                 <input type="text" class="form-control" wire:model="title" aria-describedby="helpId" placeholder="">
+                @error('title')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
                 </div>
                 <div class="mb-3" wire:ignore>
                     <label for="" class="form-label">Narasi</label>
                     <textarea class="form-control editor" id="editor" wire:model="content" rows="5"></textarea>
                 </div>
+                @error('content')
+                    <div class="text-danger">{{ $message }}</div><br>
+                @enderror
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         @if ($fotoSampul != null)
@@ -30,6 +36,7 @@
             </div>
             <div class="card-footer text-end">
                 <button type="submit" class="btn btn-primary" role="button">Simpan & Posting</button>
+                <a class="btn btn-success" href="{{ route('admin.agenda-publik') }}" role="button">Selesai <i class="bx bx-like"></i></a>
             </div>
         </div>
     </form>

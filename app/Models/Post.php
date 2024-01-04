@@ -15,7 +15,7 @@ class Post extends Model
         "slug",
         "content",
         "public",
-        // "type",
+        "activity_id",
         "main_photo_url",
     ];
 }

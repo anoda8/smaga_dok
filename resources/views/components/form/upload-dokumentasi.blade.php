@@ -31,6 +31,11 @@
             <a class="btn btn-success" wire:click="simpanDokumentasi" role="button">Selesai <i class="bx bx-like"></i></a>
         </div>
     </div>
+    <div class="card">
+        <div class="card-footer text-center">
+            <a class="btn btn-secondary" href="{{ route('admin.agenda-publik') }}" role="button">Daftar Agenda <i class="bx bx-list"></i></a>
+        </div>
+    </div>
 </div>
 @push('scripts')
 <script type="text/javascript">

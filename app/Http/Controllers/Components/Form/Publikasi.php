@@ -34,8 +34,8 @@ class Publikasi extends Component
     }
 
     public function simpan(){
-        // $this->validate();
-        dd($this->content);
+        $this->validate();
+        // dd($this->content);
         Post::updateOrCreate([
             'activity_id' => $this->activity->id
         ], [
@@ -43,7 +43,7 @@ class Publikasi extends Component
             'title' => $this->title,
             'slug' => $this->createSlug(),
             'content' => $this->content,
-            'main_photo_url' => $this->fotoSampul
+            'main_photo_url' => $this->fotoSampul->photo_url
         ]);
 
         $this->dispatch('show-alert', [

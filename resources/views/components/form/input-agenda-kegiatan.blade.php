@@ -61,8 +61,7 @@
             <div class="card-footer text-end {{ $showDetailKegiatanForm ? "" : "d-none" }}">
                 @if ($savedId != null)
                     <a href="/admin/dokumentasi/{{ $savedId }}" class="btn btn-info" role="button">
-                        <i class="bx bx-plus"></i>
-                        Lanjut
+                        Lanjut &nbsp;<i class="bx bx-right-arrow"></i>
                     </a>
                 @endif
             </div>
