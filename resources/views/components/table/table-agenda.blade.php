@@ -30,7 +30,7 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-sm btn-info" href="{{ route('admin.detail-agenda', $agenda->id) }}" role="button">
+                        <a class="btn btn-sm btn-info" href="/admin/detail-agenda/{{ $agenda->id }}/redirect/agenda-{{ $mode }}" role="button">
                             <i class="bx bx-pencil"></i>
                         </a>
                     </td>

@@ -8,9 +8,11 @@ use Livewire\Component;
 class Dokumentasi extends Component
 {
     public $activityId;
+    public $redir;
 
-    public function mount($activityId){
+    public function mount($activityId, $redir = null){
         $this->activityId = $activityId;
+        if($redir != null){$this->redir = $redir;}
     }
 
     public function render()

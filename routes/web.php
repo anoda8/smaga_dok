@@ -33,11 +33,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:super']], function(){
     Route::get('/agenda-publik', App\Http\Controllers\Pages\Admin\AgendaPublik::class)->name('admin.agenda-publik');
     Route::get('/tambah-agenda-kegiatan', App\Http\Controllers\Pages\Admin\TambahAgendaKegiatan::class)->name('admin.tambah-agenda-kegiatan');
     Route::get('/publikasi/{activityId}', App\Http\Controllers\Pages\Admin\Publikasi::class)->name('admin.publikasi');
-    Route::get('/detail-agenda/{activityId}', App\Http\Controllers\Pages\Admin\DetailAgenda::class)->name('admin.detail-agenda');
+    Route::get('/detail-agenda/{activityId}/redirect/{redir?}', App\Http\Controllers\Pages\Admin\DetailAgenda::class)->name('admin.detail-agenda');
     Route::get('/laporan/{activityId}', App\Http\Controllers\Pages\Admin\LaporanPage::class)->name('admin.laporan');
 
     Route::get('/koneksi-dapodik', App\Http\Controllers\Pages\Admin\KoneksiDapodik::class)->name('admin.koneksi-dapodik');
     Route::get('/users/{level}', App\Http\Controllers\Pages\Admin\Users::class)->name('admin.users');
-    Route::get('/dokumentasi/{activityId}', App\Http\Controllers\Pages\Admin\Dokumentasi::class)->name('admin.dokumentasi');
+    Route::get('/dokumentasi/{activityId}/redirect/{redir?}', App\Http\Controllers\Pages\Admin\Dokumentasi::class)->name('admin.dokumentasi');
     Route::post('/upload-dokumentasi', [App\Http\Controllers\Components\Form\UploadDokumentasi::class, 'doUpload'])->name('admin.upload-dokumentasi');
 });

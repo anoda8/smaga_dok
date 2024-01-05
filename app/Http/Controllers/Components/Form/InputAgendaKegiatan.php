@@ -129,6 +129,7 @@ class InputAgendaKegiatan extends Component
             $this->dispatch('show-alert', [
                 'icon' => 'success', 'message' => "Berhasil menghapus agenda kegiatan."
             ]);
+            $this->dispatch('agenda-kegiatan-terhapus');
             $this->reset();
         }
     }
