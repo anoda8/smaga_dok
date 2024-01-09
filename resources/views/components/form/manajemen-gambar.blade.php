@@ -6,20 +6,17 @@
             Manajemen Gambar {{ $activityId }}
         </div>
         <div class="card-body">
-            <div class="row mt-3">
-                <div class="col-sm-12 col-md-3">
-                    <img src="https://dummyimage.com/600x400/000/fff" class="img-thumbnail">
+            @foreach ($activity->galleries->split(3) as $photos)
+                <div class="row mt-3 mb-3">
+                    @foreach ($photos as $photo)
+                    <div class="col-sm-12 col-md-3">
+                        <div class="img-thumbnail" style="min-height:200px;">
+                            <img src="/temp-dokumentasi/{{ $activity->uuid }}/{{ $photo->photo_url }}" class="img-fluid">
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-                <div class="col-sm-12 col-md-3">
-                    <img src="https://dummyimage.com/600x400/000/fff" class="img-thumbnail">
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <img src="https://dummyimage.com/600x400/000/fff" class="img-thumbnail">
-                </div>
-                <div class="col-sm-12 col-md-3">
-                    <img src="https://dummyimage.com/600x400/000/fff" class="img-thumbnail">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
